@@ -1,7 +1,10 @@
 ---
 extends: default
 
-#ignore: |
+ignore: |
+  .github/workflows/docker-publish.yml
+  .github/workflows/ci.yaml
+  .ci/yamllint.yml
 
 yaml-files:
   - '*.yaml'
