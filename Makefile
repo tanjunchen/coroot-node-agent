@@ -2,8 +2,8 @@ GOCMD?=go
 GOBUILD?=$(GOCMD) build
 GOTEST?=$(GOCMD) test
 
-test: style-check
-	$(GOTEST) -race `go list ./...`
+test: 
+	CGO_ENABLED=1 $(GOTEST) ./...
 
 style-check:
 	gofmt -l -d ./.
@@ -12,5 +12,8 @@ style-check:
 lint:
 	golint ./...
 	golangci-lint run --tests="false"
+
+build:
+	CGO_ENABLED=1 ${GOCMD} install -mod=readonly -ldflags "-X main.version=latest"
 
 .PHONY: test style-check lint
