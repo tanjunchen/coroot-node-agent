@@ -14,6 +14,7 @@ lint:
 	golangci-lint run --tests="false"
 
 build:
-	CGO_ENABLED=1 ${GOCMD} install -mod=readonly -ldflags "-X main.version=latest"
+	apt update && apt install -y ca-certificates && apt clean
+	${GOCMD} mod download && CGO_ENABLED=1 ${GOCMD} install -mod=readonly -ldflags "-X main.version=latest"
 
 .PHONY: test style-check lint
