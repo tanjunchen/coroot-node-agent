@@ -1,11 +1,12 @@
 package node
 
 import (
+	"regexp"
+
 	"github.com/coroot/coroot-node-agent/proc"
 	"github.com/vishvananda/netlink"
 	"golang.org/x/sys/unix"
 	"inet.af/netaddr"
-	"regexp"
 )
 
 var includeNetDev = regexp.MustCompile(`^(enp\d+s\d+(f\d+)?|eth\d+|eno\d+|ens\d+)`)
